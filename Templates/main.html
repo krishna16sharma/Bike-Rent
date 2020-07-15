@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Bike Usage Model</title>
+    </head>
+    <form action="{{ url_for('main') }}" method="POST">
+        <fieldset>
+            <legend>Input values:</legend>
+            <label for="temperature">Temperature:</label>
+            <input name="temperature" type="number" required>
+            <br>
+            <br>
+            <label for="humidity">Humidity:</label>
+            <input name="humidity" type="number" required>
+            <br>
+            <br>
+            <label for="windspeed">Windspeed:</label>
+            <input name="windspeed" type="number" required>
+            <br>
+            <br>
+            <div class="center">
+                <input type="submit">
+            </div>
+        </fieldset>
+    </form>
+    <br>
+    <div class="result" align="center">
+        {% if result %}
+        	{% for variable, value in original_input.items() %}
+        		<b>{{ variable }}</b> : {{ value }}
+        	{% endfor %}
+    		<br>
+        	<br> Predicted number of bikes in use:
+       		<p style="font-size:50px">{{ result }}</p>
+        {% endif %}
+    </div>
+
+</html>
